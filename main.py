@@ -20,10 +20,10 @@ def main():
     
     args = parser.parse_args()
     
-    if not os.path.exist(args.save_dir):
+    if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
     
-    model = vgg_module.vgg16() ## model
+    model = vgg_module.vgg16(vgg_module.VGG) ## model
     
     train_loader = torch.utils.data.DataLoader(
         datasets.CIFAR10(root='/.data',train = True, transform=transforms.Compose([
