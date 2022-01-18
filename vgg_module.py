@@ -30,6 +30,7 @@ class VGG(nn.Module):
         
     def forward(self, x):
         x = self.pipeline(x)
+        print("hi")
         x = x.view(x.size(0), -1)
         x = self.classifier(x)
         x = F.softmax(x)

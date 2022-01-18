@@ -26,7 +26,7 @@ def main():
     model = vgg_module.vgg16(vgg_module.VGG) ## model
     
     train_loader = torch.utils.data.DataLoader(
-        datasets.CIFAR10(root='/.data',train = True, transform=transforms.Compose([
+        datasets.CIFAR10(root='./data',train = True, transform=transforms.Compose([
             transforms.RandomHorizontalFlip(p=0.5),
             transforms.RandomCrop(32,4), ## transforms.RandomCrop(32,32)
             transforms.ColorJitter(brightness=0.5, hue=0.3),
@@ -42,8 +42,8 @@ def main():
             transforms.ToTensor(),
             transforms.Normalize(mean=[0.485, 0.465, 0.406],
                                  std = [0.229, 0.224, 0.225])
-        ]), batch_size=256, shuffle=False, num_workers = 0, pin_memory = True)
-    )
+        ])), batch_size=256, shuffle=False, num_workers = 0, pin_memory = True)
+    
     cudnn.benchmark = True
     
     criterion = nn.CrossEntropyLoss()
